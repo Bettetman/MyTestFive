@@ -15,14 +15,14 @@ public class BaseDao {
 	/**
 	 * 获取数据库连接对象。
 	 */
-	public Connection getConnection() {
+	 private Connection getConnection() {
 		Connection conn = null;
 		Context ctx = null;
 		// 获取连接并捕获异常
 		try {
 			ctx = new InitialContext();
 			DataSource ds = (DataSource) ctx
-					.lookup("java:comp/env/jdbc/registration");
+					.lookup("java:comp/env/jdbc/JDBCpool");
 			conn = ds.getConnection();
 		} catch (NamingException e) {
 			e.printStackTrace();
@@ -45,7 +45,7 @@ public class BaseDao {
 	 * @param rs
 	 *            结果集
 	 */
-	public void closeAll(Connection conn, Statement stmt, ResultSet rs) {
+	private void closeAll(Connection conn, Statement stmt, ResultSet rs) {
 		// 若结果集对象不为空，则关闭
 		if (rs != null) {
 			try {
@@ -72,7 +72,7 @@ public class BaseDao {
 		}
 	}
 
-	public void closeAll(Connection conn, Statement stmt) {
+	private void closeAll(Connection conn, Statement stmt) {
 		closeAll(conn, stmt, null);
 	}
 
@@ -85,7 +85,7 @@ public class BaseDao {
 	 *            参数数组
 	 * @return 执行结果
 	 */
-	public int executeUpdate(String sql, Object... params) {
+	protected int executeUpdate(String sql, Object... params) {
 		int result = 0;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -108,7 +108,7 @@ public class BaseDao {
 		return result;
 	}
 
-	public Object executeQuery(RSProcessor processor, String sql,
+	protected Object executeQuery(RSProcessor processor, String sql,
 			Object... params) {
 		Object result = null;
 		Connection conn = null;

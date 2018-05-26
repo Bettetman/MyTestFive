@@ -1,4 +1,5 @@
-<%@page import="cn.sicnu.edu.ming.sql.SQLHelper"%>
+<%@page import="cn.sicnu.edu.ming.test05.dao.impl.UserDaoImpl"%>
+
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -16,6 +17,8 @@
       
       if(account!=null || password!=null){
       
+    	UserDaoImpl helper =new  UserDaoImpl();
+    	
     
       SQLHelper helper =new SQLHelper();
       
