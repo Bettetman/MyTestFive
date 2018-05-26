@@ -1,0 +1,192 @@
+<<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>登陆界面</title>
+	<style type="text/css">
+	.header{
+		/*border: 1px  solid red;*/
+		height: 70px;
+		width: :100%;
+		top: 0px;
+		margin-left: 30px;
+		position: relative;
+	}
+	.images{
+		position: absolute;
+		margin-top: 0px;
+		margin-left: 20%;
+	}
+	.middlepart{
+		/*border: 1px solid gray;*/
+		height: 500px;
+		width: :100%;
+		top: 0px;
+		margin-left: 0px;
+        position: relative;
+	}
+	.footer{
+		/*border: 1px solid blue;*/
+		height: 20px;
+		width: :100%;
+        top: 0px;
+		margin-left: 0px;
+	}
+	.middlepart .right{
+		position: absolute;
+		width: 350px;
+	   height: 250px;
+		background: green;
+		margin-top: 100px;
+		margin-left: 900px;
+
+	}
+	.middlepart .left img{
+		position: absolute;
+		height: 400px;
+		width: 700px;
+		background: yellow;
+		margin-top: 50px;
+		margin-left: 100px;
+		border: 1px solid red;
+	}
+
+     /*按钮的设置*/
+    #login{
+	width: 350px;
+	height: 250px;
+	background-color: #ddffff;
+	padding: 5px;
+   }
+   #login fieldset {
+	border: none;
+	margin-top: 10px;
+    }
+   #login fieldset legend{
+	font-weight: bold;
+    }
+    #login fieldset p{
+	display: block;
+	height: 30px;
+    }
+   #login fieldset p label {
+	display: block;
+	float:left;
+	text-align: right;
+	font-size: 12px;
+	width: 90px;
+	height: 30px;
+	line-height: 30px;
+   }
+   #login fieldset p input {
+	display: block;
+	float:left;
+	border: 1px solid #999;
+	width: 200px;
+	height: 30px;
+	line-height: 30px;
+   }
+   #login fieldset p input.code{
+	width: 60px;
+   }
+   #login fieldset p img{
+	margin-left: 10px;
+   }
+   #login fieldset p a{
+	color: #057BD2;
+	font-size: 12px;
+	text-decoration: none;
+	margin: 10px;
+   }
+	#login fieldset p input.btn{
+	background: url("zjxddljm/login.gif") no-repeat;
+	width: 98px;
+	height: 32px;
+	margin-left: 60px;
+	color: #ffffff;
+	}
+	#login fieldset p input.input_focus{
+	background-color: #BEE7FC;
+	}
+	#input_focus{
+	background-color: #BEE7FC;
+	}
+
+	}
+	</style>
+ 
+
+<body>
+<div class="header">
+ <img class="images"src="zjxddljm\head.png">
+ 
+</div>
+<div class="middlepart">
+	<div class="left"> <img src="zjxddljm\left.png"></div>
+	<div class="right">
+		 
+		<div id="login">
+			<form id="frmV" method="get" action="loginHandle.jsp">
+ 			 <fieldset id="login_form">
+    			<legend>用户登录</legend>
+    			<p>
+        			 <label>用户名：</label>
+       				 <input name="account" type="text" id="account" />
+    			</p>
+
+   				 <p>
+       				 <label>密码：</label>
+        			<input name="password" type="password" id="password" />
+        			
+    			</p>
+				<p>
+	      	  		 <input  type="submit" class="btn"  value="登录" />
+	        		 <a href="sign.html">注册</a><span>|</span><a href="#">忘记密码？</a>
+					</p>
+					<span></span>
+  			</fieldset>
+  			  </form>
+		</div> 
+	 
+	</div>
+
+
+</div>
+<div class="footer">
+ 	<span><center>copyright by frank 18/4/27/23:39</center>></span>
+</div>
+<script src="jsneed/jquery-1.12.4.min.js"></script>
+<script src="jsneed/jquery-ui-1.12.1.min.js"></script>
+
+<script type="text/javascript" src="jsneed/jquery.validate.js"></script>
+<script type="text/javascript" src="jsneed/jquery.validate.messages_cn.js"></script>
+<!-- 必须导入的包如上图所示 不然就会出现问题 -->
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#login_form [type=text]").focus(function(){
+    	$(this).addClass("input_focus");
+    });
+    $("#login_form [type=text]").blur(function(){
+    	$(this).removeClass("input_focus");
+    });
+    $("#frmV").validate(
+    		{
+    			rules:{
+    				  username: { required: true,  minlength: 4},
+                      password: {required: "请输入密码",minlength: 18},
+    			},
+  				errorPlacement:function(error,element)
+  				{
+  				 error.appendTo(element.parent().parent())
+  					
+  				}			
+    });
+    $("#ttt").click(function(){
+    	 window.location.replace("test2.html"); 
+    });
+});
+
+</script>
+	
+</body>
+</html>
