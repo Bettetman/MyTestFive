@@ -7,16 +7,26 @@ public class Product {
 	private  int id;
 	private String name;
 	private int price;
+	private String des;
 
-	public Product(int id, String name, int price) {
+	public Product(int id, String name, int price, String des) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.price = price;
+		this.des = des;
+	}
+
+	public String getDes() {
+		return des;
+	}
+
+	public void setDes(String des) {
+		this.des = des;
 	}
 
 	public Product() {
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public int getId() {

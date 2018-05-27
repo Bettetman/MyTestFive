@@ -94,7 +94,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		   return false;
 	   }
 	   else {
-		   String sql = "delete  * from where account = ?";
+		   String sql = "delete  from  user where account = ?";
 		   Object[] params={user.getAccount()};
 		   int count =this.executeUpdate(sql, params);
 		   return count>0?false:true;
