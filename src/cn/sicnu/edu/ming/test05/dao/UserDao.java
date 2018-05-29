@@ -12,7 +12,7 @@ public interface UserDao {
 	//查找用户
 	public int countUserNumber();
 	
-	public User findUserByAccount(int account);
+	public User findUserByAccount(String account);
 	public User findUserByUser(User user);
 	
 	//添加用户

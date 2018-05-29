@@ -15,7 +15,7 @@ public class UserLoginBizImpl implements UserLoginBiz {
 	}
 
 	@Override
-	public User login(int account, String password) {
+	public User login(String account, String password) {
 		User us = userDaoHelper.findUserByAccount(account) ;
 	    if(us==null && us.getPassword().equals(password))
 	    {

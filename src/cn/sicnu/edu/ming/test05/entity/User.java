@@ -5,14 +5,14 @@ package cn.sicnu.edu.ming.test05.entity;
 */
 public class User {
 	private int id;
-	private int account;
+    private String account;
 	private String password;
 	private String showName;
 	private String email;
 	private String describe;
  
 
-	public User(int id, int account, String password, String showName, String email, String describe) {
+	public User(int id, String account, String password, String showName, String email, String describe) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -21,8 +21,14 @@ public class User {
 		this.email = email;
 		this.describe = describe;
 	}
+	
+	public User(String account,String password,String showName,String email,String describe)
+	{
+		this(account,password,showName,email);
+		this.describe=describe;
+	}
 
-	public User(int id, int account, String password, String showName, String email) {
+	public User(int id, String account, String password, String showName, String email) {
 		super();
 		this.id = id;
 		this.account = account;
@@ -31,7 +37,7 @@ public class User {
 		this.email = email;
 	}
 
-	public User(int account, String password, String showName, String email) {
+	public User(String account, String password, String showName, String email) {
 		super();
 		this.account = account;
 		this.password = password;
@@ -47,11 +53,11 @@ public class User {
 		this.id = id;
 	}
 
-	public int getAccount() {
+	public String getAccount() {
 		return account;
 	}
 
-	public void setAccount(int account) {
+	public void setAccount(String account) {
 		this.account = account;
 	}
 

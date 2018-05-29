@@ -1,3 +1,4 @@
+<%@page import="cn.sicnu.edu.ming.test05.entity.User"%>
 <%@page import="cn.sicnu.edu.ming.test05.dao.impl.UserDaoImpl"%>
 
 <%@ page language="java" contentType="text/html; charset=utf-8"
@@ -20,11 +21,12 @@
     	UserDaoImpl helper =new  UserDaoImpl();
     	
     
-      SQLHelper helper =new SQLHelper();
-      
-      if(helper.isExistAccount(account))
+  
+      User user=helper.findUserByAccount(account);
+      if(user!=null)
       {
-    		  if(helper.getOneAccount(account).getPassword().equals(password))
+    	  	  out.print("账户存在");
+    		  if(user.getPassword().equals(password))
     		  {
     			 
     				request.getRequestDispatcher("loginSuccess.jsp") .forward(request,response);

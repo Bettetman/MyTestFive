@@ -37,7 +37,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 	}
 
 	@Override
-	public User findUserByAccount(int account) {
+	public User findUserByAccount(String account) {
 		String sql ="select * from user where account=?";
 		RSProcessor processor =new RSProcessor() {
 			
@@ -46,7 +46,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
                User user = null;
                while (rs.next()) { 
             		int id = rs.getInt("id");
-            		int account = rs.getInt("account");
+            		String account = rs.getString("account");
             		String password = rs.getString("password");
             		String showName = rs.getString("showname");
             		String email = rs.getString("email");
@@ -75,7 +75,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 		else {
 			String sql ="insert into user (`account`, `password`, `showname`, `email`, `describe`) "
 		                                           +"values(?,?,?,?,?)";
-			int account = user.getAccount();
+			String account = user.getAccount();
 			String password =user.getPassword();
 			String showName =user.getShowName();
 			String email =user.getEmail();
@@ -83,7 +83,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 			Object[] params = {account,password,showName,email,describe};
 			int count = this.executeUpdate(sql, params);
 			
-			return count>0?false:true;
+			return count>0?true:false;
 		}
 	}
 
